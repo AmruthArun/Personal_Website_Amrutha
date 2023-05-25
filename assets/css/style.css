@@ -1298,3 +1298,7 @@ section {
 #footer .credits {
   font-size: 13px;
 }
+
+select.error, textarea.error, input.error {
+  color:#FF0000;
+}

@@ -325,7 +325,8 @@ $().ready(function () {
     message: {
       name: {
         required: "Enter the Name",
-        minlength: "Enter atleast 4 characters"
+        minlength: "Enter atleast 4 characters",
+        
       },
       email: {
         required: "Enter the Email Address",
@@ -354,6 +355,7 @@ $().ready(function () {
 
 
 // // *****************Method 1*******************
+
 // // Function to convert form data to JSON
 // function formToJson(form) {
 //   const formData = new FormData(form);
@@ -387,51 +389,76 @@ $().ready(function () {
 // });
 
 
-// Function to convert form data to an array of arrays (Excel format)
-function formToExcelData(form) {
-  const formData = new FormData(form);
-  const excelData = [];
 
-  for (const [key, value] of formData.entries()) {
-    excelData.push([key, value]);
-  }
+// // ************************method2 2*****************************
 
-  return excelData;
-}
+// // Function to convert form data to an array of arrays (Excel format)
+// function formToExcelData(form) {
+//   const formData = new FormData(form);
+//   const excelData = [];
 
-// Function to download Excel file
-function downloadExcel(excelData) {
-  const worksheet = XLSX.utils.aoa_to_sheet(excelData);
-  const workbook = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(workbook, worksheet, "Form Data");
-  const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+//   for (const [key, value] of formData.entries()) {
+//     excelData.push([key, value]);
+//   }
 
-  const filename = 'form_data.xlsx';
-  const blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
+//   return excelData;
+// }
 
-  if (navigator.msSaveBlob) {
-    // For IE 10+
-    navigator.msSaveBlob(blob, filename);
-  } else {
-    // For other browsers
-    const downloadAnchor = document.createElement('a');
-    const url = URL.createObjectURL(blob);
+// // Function to download Excel file
+// function downloadExcel(excelData) {
+//   const worksheet = XLSX.utils.aoa_to_sheet(excelData);
+//   const workbook = XLSX.utils.book_new();
+//   XLSX.utils.book_append_sheet(workbook, worksheet, "Form Data");
+//   const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
 
-    downloadAnchor.setAttribute('href', url);
-    downloadAnchor.setAttribute('download', filename);
-    downloadAnchor.style.display = 'none';
-    document.body.appendChild(downloadAnchor);
-    downloadAnchor.click();
-    document.body.removeChild(downloadAnchor);
+//   const filename = 'form_data.xlsx';
+//   const blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
 
-    // Release the object URL
-    URL.revokeObjectURL(url);
-  }
-}
+//   if (navigator.msSaveBlob) {
+//     // For IE 10+
+//     navigator.msSaveBlob(blob, filename);
+//   } else {
+//     // For other browsers
+//     const downloadAnchor = document.createElement('a');
+//     const url = URL.createObjectURL(blob);
 
-// Event listener for form submission
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const excelData = formToExcelData(this);
-  downloadExcel(excelData);
-});
+//     downloadAnchor.setAttribute('href', url);
+//     downloadAnchor.setAttribute('download', filename);
+//     downloadAnchor.style.display = 'none';
+//     document.body.appendChild(downloadAnchor);
+//     downloadAnchor.click();
+//     document.body.removeChild(downloadAnchor);
+
+//     // Release the object URL
+//     URL.revokeObjectURL(url);
+//   }
+// }
+
+// // Event listener for form submission
+// document.getElementById('contactForm').addEventListener('submit', function(e) {
+//   e.preventDefault();
+//   const excelData = formToExcelData(this);
+//   downloadExcel(excelData);
+// });
+
+
+
+// // ************************method 3 google forms*****************************
+
+$("#contactForm").submit((e)=>{
+  e.preventDefault()
+  $.ajax({
+      url:"https://script.google.com/macros/s/AKfycbyAfrpA58jD5zF5qIqRCOH9EnpN_3UiDBQQJKTjSZYTzqxLnPicEKGRBR_fFm7_Fg_B/exec",
+      data:$("#contactForm").serialize(),
+      method:"post",
+      success:function (response){
+          alert("Form submitted successfully")
+          window.location.reload()
+          //window.location.href="https://google.com"
+      },
+      error:function (err){
+          alert("Something Error")
+
+      }
+  })
+})
