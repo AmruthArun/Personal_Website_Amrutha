@@ -101,35 +101,80 @@
 
         </div>
 
+          <!-- <form id="contactForm" action="" method="" role="form" class="php-email-form" > -->
 
         <div class="col-lg-6">
-          <form id="contactForm" action="" method="post" role="form" class="php-email-form"
-            >
-            <!-- <form id="contactForm" action="" method="post" role="form" class="php-email-form" onsubmit="return validateForm(event)"> -->
+          <!-- <form id="contactForm" name="contactForm" action="" method="post" role="form" class="php-email-form"
+            onsubmit="return validateForm(event)">
             <div class="row">
               <div class="col-md-6 form-group">
                 <input type="text" name="name" class="form-control" id="name" placeholder="Your Name">
+                <span id="name-error" class="error-message"></span>
               </div>
               <div class="col-md-6 form-group mt-3 mt-md-0">
                 <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
+                <span id="email-error" class="error-message"></span>
               </div>
             </div>
             <div class="form-group mt-3">
               <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
-            </div>
+                <span id="subject-error" class="error-message"></span>
+              </div>
             <div class="form-group mt-3">
               <textarea class="form-control" name="message" id="message" rows="6" placeholder="Message"></textarea>
-            </div>
+                <span id="message-error" class="error-message"></span>
+              </div>
             <div class="my-3">
               <div class="loading">Loading</div>
               <div class="error-message"></div>
               <div class="sent-message">Your message has been sent. Thank you!</div>
             </div>
             <div class="text-center"><button type="submit">Send Message</button></div>
-          </form>
-        </div>
+          </form> -->
 
+
+
+          <form class="row border mt-5 p-5 bg-light" name="contactForm" id="contactForm" method=""
+            action=""
+                onsubmit="return validateForm()">
+                <div class="col-md-6 ">
+                    <label class="form-label text-dark fw-bold">First Name</label>
+                    <input type="text" name="firstName" class="form-control" id="firstName"
+                        placeholder="Enter the First Name" >
+                    <span id="firstName-error" class="error-message"></span>
+                </div>
+                <div class="col-md-6 ">
+                    <label class="form-label text-dark fw-bold">Last Name</label>
+                    <input type="text" name="lastName" class="form-control" id="lastName"
+                        placeholder="Enter the last Name" >
+                    <span id="lastName-error" class="error-message"></span>
+                </div>
+                <div class="col-md-8 ">
+                    <label class="form-label text-dark fw-bold mt-3">Email</label>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="hello@gmail.com"
+                        >
+                    <span id="email-error" class="error-message"></span>
+                </div>
+                <div class="col-md-4 ">
+                    <label class="form-label text-dark fw-bold mt-3">Phone Number</label>
+                    <input type="text" name="phoneNumber" class="form-control" id="phoneNumber" placeholder="+91"
+                        >
+                    <span id="phoneNumber-error" class="error-message"></span>
+                </div>
+                <div class="col-md-12 ">
+                    <label class="form-label text-dark fw-bold fw-bold mt-3">Comments,Questions ?</label>
+                    <textarea class="form-control" name="message" id="message" rows="3"></textarea>
+                    <span id="message-error" class="error-message"></span>
+                </div>
+                <div class="col-md-12 text-center">
+                    <button id="btnclick" type="submit" class="btn btn-danger mt-3 ">Submit</button>
+                    <span id="btn-error"></span>
+                </div>
+            </form>
+
+        </div>
       </div>
+
 
     </div>
   </section><!-- End Contact Me Section -->

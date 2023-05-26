@@ -256,94 +256,94 @@
 
 })()
 
-function validateForm(event) {
-  event.preventDefault(); // Prevent form submission
+// function validateForm(event) {
+//   event.preventDefault(); // Prevent form submission
 
-  var name = document.getElementById("name");
-  var email = document.getElementById("email");
-  var subject = document.getElementById("subject");
-  var message = document.getElementById("message");
+//   var name = document.getElementById("name");
+//   var email = document.getElementById("email");
+//   var subject = document.getElementById("subject");
+//   var message = document.getElementById("message");
 
-  // Reset error messages
-  name.setCustomValidity("");
-  email.setCustomValidity("");
-  subject.setCustomValidity("");
-  message.setCustomValidity("");
+//   // Reset error messages
+//   name.setCustomValidity("");
+//   email.setCustomValidity("");
+//   subject.setCustomValidity("");
+//   message.setCustomValidity("");
 
-  if (!name.checkValidity()) {
-    name.setCustomValidity("Please enter your name.");
-  }
+//   if (!name.checkValidity()) {
+//     name.setCustomValidity("Please enter your name.");
+//   }
 
-  if (!email.checkValidity()) {
-    email.setCustomValidity("Please enter a valid email address.");
-  }
+//   if (!email.checkValidity()) {
+//     email.setCustomValidity("Please enter a valid email address.");
+//   }
 
-  if (!subject.checkValidity()) {
-    subject.setCustomValidity("Please enter a message.");
-  }
+//   if (!subject.checkValidity()) {
+//     subject.setCustomValidity("Please enter a message.");
+//   }
 
-  if (!message.checkValidity()) {
-    message.setCustomValidity("Please enter a message.");
-  }
+//   if (!message.checkValidity()) {
+//     message.setCustomValidity("Please enter a message.");
+//   }
 
-  // Display error messages
-  name.reportValidity();
-  email.reportValidity();
-  message.reportValidity();
+//   // Display error messages
+//   name.reportValidity();
+//   email.reportValidity();
+//   message.reportValidity();
 
-  // If all fields are valid, you can submit the form
-  if (name.checkValidity() && email.checkValidity() && message.checkValidity()) {
-    document.getElementById("contactForm").submit();
-
-
-  }
-}
+//   // If all fields are valid, you can submit the form
+//   if (name.checkValidity() && email.checkValidity() && message.checkValidity()) {
+//     document.getElementById("contactForm").submit();
 
 
-$().ready(function () {
+//   }
+// }
 
-  $("#contactForm").validate({
-    rules: {
-      name: {
-        required: true,
-        minlength: 4
-      },
-      email: {
-        required: true,
-        minlength: 10
-        // type:email
-      },
-      subject: {
-        required: true,
 
-      },
-      message: {
-        required: true,
-        rangelength: [10, 250],
-      },
-    },
-    message: {
-      name: {
-        required: "Enter the Name",
-        minlength: "Enter atleast 4 characters",
+// $().ready(function () {
+
+//   $("#contactForm").validate({
+//     rules: {
+//       name: {
+//         required: true,
+//         minlength: 4
+//       },
+//       email: {
+//         required: true,
+//         minlength: 10
+//         // type:email
+//       },
+//       subject: {
+//         required: true,
+
+//       },
+//       message: {
+//         required: true,
+//         rangelength: [10, 250],
+//       },
+//     },
+//     message: {
+//       name: {
+//         required: "Enter the Name",
+//         minlength: "Enter atleast 4 characters",
         
-      },
-      email: {
-        required: "Enter the Email Address",
-        email: "Enter a valid email address",
-      },
-      subject: {
-        required: "Enter the Subject",
-      },
-      message: {
-        required: "Enter the Message",
-        rangelength: "Enter a message between 10 and 250 characters",
+//       },
+//       email: {
+//         required: "Enter the Email Address",
+//         email: "Enter a valid email address",
+//       },
+//       subject: {
+//         required: "Enter the Subject",
+//       },
+//       message: {
+//         required: "Enter the Message",
+//         rangelength: "Enter a message between 10 and 250 characters",
 
-      },
-    }
+//       },
+//     }
 
-  });
-});
+//   });
+// });
 
 
 //Capture the event only from form
@@ -445,9 +445,166 @@ $().ready(function () {
 
 // // ************************method 3 google forms*****************************
 
-$("#contactForm").submit((e)=>{
-  e.preventDefault()
-  $.ajax({
+// $("#contactForm").submit((e)=>{
+//   e.preventDefault()
+//   $.ajax({
+//       url:"https://script.google.com/macros/s/AKfycbyAfrpA58jD5zF5qIqRCOH9EnpN_3UiDBQQJKTjSZYTzqxLnPicEKGRBR_fFm7_Fg_B/exec",
+//       data:$("#contactForm").serialize(),
+//       method:"post",
+//       success:function (response){
+//           alert("Form submitted successfully")
+//           window.location.reload()
+//           //window.location.href="https://google.com"
+//       },
+//       error:function (err){
+//           alert("Something Error")
+
+//       }
+//   })
+// })
+
+// ******************4********************
+
+// function validateForm() {
+//   var name = document.forms["contactForm"]["name"].value;
+//   var email = document.forms["contactForm"]["email"].value;
+//   var subject = document.forms["contactForm"]["subject"].value;
+//   var message = document.forms["contactForm"]["message"].value;
+
+//   clearErrorMessages();
+//   var hasErrors = false;
+
+//   if (name == "") {
+//     displayErrorMessage("name", "name must be filled out");
+//     hasErrors = true;
+//   }
+//   else if (name.length < 4) {
+//     displayErrorMessage("name", "name must be atleast 4 charecters");
+//     hasErrors = true;
+//   }
+
+//   if (email == "") {
+//     displayErrorMessage("email", "Email must be filled out");
+//     hasErrors = true;
+//   } else if (!isValidEmail(email)) {
+//     displayErrorMessage("email", "Invalid email address");
+//     hasErrors = true;
+//   }
+
+
+//   if (subject == "") {
+//     displayErrorMessage("subject", "subject must be filled out");
+//     hasErrors = true;
+//   }
+//   else if (subject.length < 4) {
+//     displayErrorMessage("subject", "subject must be atleast 4 charecters");
+//     hasErrors = true;
+//   }
+
+//   if (message == "") {
+//     displayErrorMessage("message", "Message must be filled out");
+//     hasErrors = true;
+//   }
+//   else if (message.length < 10) {
+//     displayErrorMessage("message", "Message must be atleast 10 charecters ");
+//     hasErrors = true;
+//   }
+
+
+//   if (hasErrors) {
+//     return false;
+//   }
+// }
+
+// function isValidEmail(email) {
+//   // Regular expression to validate email format
+//   var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//   return emailPattern.test(email);
+// }
+
+// function displayErrorMessage(fieldId, errorMessage) {
+//   var field = document.getElementById(fieldId);
+//   var errorContainer = document.getElementById(fieldId + "-error");
+//   errorContainer.innerHTML = errorMessage;
+//   field.classList.add("error");
+// }
+
+// function clearErrorMessages() {
+//   var errorContainers = document.getElementsByClassName("error-message");
+//   for (var i = 0; i < errorContainers.length; i++) {
+//     errorContainers[i].innerHTML = "";
+//   }
+
+//   var fields = document.getElementsByTagName("input");
+//   for (var i = 0; i < fields.length; i++) {
+//     fields[i].classList.remove("error");
+//   }
+// }
+
+
+
+function validateForm(e) {
+  //e.preventDefault();
+  var firstName = document.forms["contactForm"]["firstName"].value;
+  var lastName = document.forms["contactForm"]["lastName"].value;
+  var email = document.forms["contactForm"]["email"].value;
+  var phoneNumber = document.forms["contactForm"]["phoneNumber"].value;
+  var message = document.forms["contactForm"]["message"].value;
+
+  clearErrorMessages();
+  var hasErrors = false;
+
+  if (firstName == "") {
+    displayErrorMessage("firstName", "First name must be filled out");
+    hasErrors = true;
+  }
+  else if (firstName.length < 4) {
+    displayErrorMessage("firstName", "First name must be atleast 4 charecters");
+    hasErrors = true;
+  }
+
+  if (lastName == "") {
+    displayErrorMessage("lastName", "Last name must be filled out");
+    hasErrors = true;
+  }
+  else if (lastName.length < 4) {
+    displayErrorMessage("lastName", "Last name must be atleast 4 charecters");
+    hasErrors = true;
+  }
+
+  if (email == "") {
+    displayErrorMessage("email", "Email must be filled out");
+    hasErrors = true;
+  } else if (!isValidEmail(email)) {
+    displayErrorMessage("email", "Invalid email address");
+    hasErrors = true;
+  }
+
+
+  if (phoneNumber == "") {
+    displayErrorMessage("phoneNumber", "Phone number must be filled out");
+    hasErrors = true;
+  } else if (!isValidPhoneNumber(phoneNumber)) {
+    displayErrorMessage("phoneNumber", "Invalid phone number");
+    hasErrors = true;
+  }
+
+
+  if (message == "") {
+    displayErrorMessage("message", "Message must be filled out");
+    hasErrors = true;
+  }
+  else if (message.length < 10) {
+    displayErrorMessage("message", "Message must be atleast 10 charecters ");
+    hasErrors = true;
+  }
+
+
+  if (hasErrors) {
+    return false;
+  }
+  else{
+    $.ajax({
       url:"https://script.google.com/macros/s/AKfycbyAfrpA58jD5zF5qIqRCOH9EnpN_3UiDBQQJKTjSZYTzqxLnPicEKGRBR_fFm7_Fg_B/exec",
       data:$("#contactForm").serialize(),
       method:"post",
@@ -461,4 +618,36 @@ $("#contactForm").submit((e)=>{
 
       }
   })
-})
+  }
+}
+
+function isValidEmail(email) {
+  // Regular expression to validate email format
+  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailPattern.test(email);
+}
+
+function isValidPhoneNumber(phoneNumber) {
+  // Regular expression to validate phone number format
+  var phonePattern = /^\d{10}$/;
+  return phonePattern.test(phoneNumber);
+}
+
+function displayErrorMessage(fieldId, errorMessage) {
+  var field = document.getElementById(fieldId);
+  var errorContainer = document.getElementById(fieldId + "-error");
+  errorContainer.innerHTML = errorMessage;
+  field.classList.add("error");
+}
+
+function clearErrorMessages() {
+  var errorContainers = document.getElementsByClassName("error-message");
+  for (var i = 0; i < errorContainers.length; i++) {
+    errorContainers[i].innerHTML = "";
+  }
+
+  var fields = document.getElementsByTagName("input");
+  for (var i = 0; i < fields.length; i++) {
+    fields[i].classList.remove("error");
+  }
+}

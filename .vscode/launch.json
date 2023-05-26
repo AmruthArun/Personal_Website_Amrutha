@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open contact.html",
-            "file": "d:\\learnings\\web_designing\\Personal_website\\personal-website-2\\contact.html"
+            "file": "D:\\learnings\\web_designing\\GIT_HUB\\Personal_Website_Amrutha\\Personal_Website_Amrutha\\contact.html"
         }
     ]
 }
